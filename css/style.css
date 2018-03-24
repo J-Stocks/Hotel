@@ -1,0 +1,314 @@
+/* Section 1 Colour scheme guide. */
+/* Section 2 Page wide element styleing */
+/* Section 3 Main page layout. */
+/* Section 4 Common flex classes. */
+/* Section 5 Logo style. */
+/* Section 6 Search form style. */
+/* Section 7 Hotel output style. */
+
+/* Section 1 */
+/* Colour scheme guide */
+
+/* Page background colour: #ACCBD1 */
+/* Hotel and input background colour: #7BADB7 */
+/* Highlight and hover colour: #7E9499 */
+/* Error messages and crossmark colour: #721917 */
+/* Checkmark colour: #143F0D */
+
+/* Section 2 */
+/* Page wide element styleing */
+@font-face{
+          font-family: "Nunito-Regular";
+          src: url("../fonts/Nunito-Regular.ttf");
+}
+
+body{
+  font-family: "Nunito-Regular", Verdana, sans-serif;
+  font-size: 1.3em;
+  color: #000000;
+  padding: 0;
+  margin: 0;
+  background-color: #ACCBD1;
+}
+
+/* body::selection{
+
+} */
+
+h1,h2,h3,h4,h5,p,ul,li,ol{
+  padding: 0;
+  margin: 0;
+}
+
+/* Section 3 */
+/* Main page layout. */
+.mainGridBefore{
+  display: grid;
+  grid-template-columns: 1fr auto 0em 1fr;
+  grid-template-rows: 2.7em auto 2em;
+  min-height: 100vh;
+  grid-row-gap: 0.5em;
+  grid-column-gap: 0.5em;
+}
+
+.mainGridAfter{
+  display: grid;
+  grid-template-columns: 1fr auto auto 1fr;
+  grid-template-rows: 2.7em auto 2em;
+  min-height: 100vh;
+  grid-row-gap: 0.5em;
+  grid-column-gap: 0.5em;
+}
+
+#leftPad{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#rightPad{
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#copyright{
+  grid-column-start: 2;
+  grid-column-end: 4;
+  font-size: 0.77em;
+}
+
+/* Section 4 */
+/*Common Flex classes*/
+.flexCenter{
+  display: flex;
+  justify-content: center;
+}
+
+.flexBetween{
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexAround{
+  display: flex;
+  justify-content: space-around;
+}
+
+.flexStart{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flexEnd{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flexCol{
+  flex-direction: column;
+}
+
+.vertCenter{
+  align-items: center;
+}
+
+/* Section 5 */
+/* Logo style. */
+
+/* Section 6 */
+/* Search form style. */
+.errorMessage{
+  /* color: #A52422; */
+  color: #721917;
+}
+
+.formGrid{
+  display: grid;
+  align-self: flex-start;
+  max-width: 20em;
+  /* grid-template-columns: 7em auto; */
+  grid-template-columns: auto auto;
+  grid-gap: 0.5em;
+}
+
+.gridColSpan2{
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.startHidden{
+  display: none;
+}
+
+.noWrap{
+  white-space: nowrap;
+}
+
+.standardLabel{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+}
+
+#distanceLabel{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.inputAddon{
+  display: flex;
+  align-items: center;
+  padding-left: 0.2em;
+  border: none;
+  background-color: #7BADB7;
+}
+
+input{
+  font-family: "Nunito-Regular", Verdana, sans-serif;
+  font-size: 1em;
+  outline: 0.1em solid #ACCBD1;
+  transition: all ease-in-out 0.2s;
+}
+
+input:focus{
+  outline: 0.1em solid #7E9499;
+}
+
+input:hover{
+  outline: 0.1em solid #7E9499;
+}
+
+input[type="search"]{
+  max-width: 9.4em;
+  padding-left: 0.2em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  border: none;
+  background-color: #7BADB7;
+}
+
+input[type="number"]{
+  text-align: right;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-right: 0.2em;
+  border: none;
+  outline: none;
+  background-color: #7BADB7;
+}
+
+/* input[type="number"]:focus{
+  border: 0.1em solid #7E9499;
+  border-left: none;
+} */
+
+/* input[type="number"]:hover{
+  border: 0.1em solid #7E9499;
+  border-left: none;
+} */
+
+input[type="checkbox"]{
+  margin: 0;
+  padding: 0;
+}
+
+input[type="button"]{
+  width: 100%;
+  border: none;
+  background-color: #7BADB7;
+}
+
+select{
+  font-family: "Nunito-Regular", Verdana, sans-serif;
+  font-size: 1em;
+  margin-left: 0.3em;
+  border: none;
+  background-color: #7BADB7;
+  outline: 0.1em solid #ACCBD1;
+  transition: all ease-in-out 0.2s;
+}
+
+/* select::selection{
+  background-color: #7E9499;
+} */
+
+select:focus{
+  outline: 0.1em solid #7E9499;
+}
+
+select:hover{
+  outline: 0.1em solid #7E9499;
+}
+
+.unFocusOutline{
+  outline: 0.1em solid #ACCBD1;
+}
+
+.focusOutline{
+  outline: 0.1em solid #7E9499;
+}
+
+#priceMinWrapper{
+  transition: all ease-in-out 0.2s;
+}
+#priceMaxWrapper{
+  transition: all ease-in-out 0.2s;
+}
+
+/* Section 7 */
+/* Hotel output style. */
+.checkMark{
+  /* color: green; */
+  /* color: #53DD6C; */
+  /* color: #6B8F71; */
+  /* color: #329a22; */
+  color: #143F0D;
+}
+
+.crossMark{
+  /* color: red; */
+  /* color: #A52422; */
+  color: #711919;
+}
+
+.hotelDetailsList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#outputWrapper{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-row-gap: 0.5em;
+}
+
+.hotelImage{
+  background-color: #7BADB7;
+  /* grid-row-start: 1; */
+  /* grid-row-end: 3; */
+  /* margin-right: 0.3em; */
+}
+
+.hotelDetails{
+  padding: 0.3em;
+  background-color: #7BADB7;
+  /* min-height: 250px; */
+  white-space: nowrap;
+}
+
+.noHotels{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: #A52422; */
+  color: #721917;
+  min-width: 29.4em;
+  padding-top: 9em;
+}

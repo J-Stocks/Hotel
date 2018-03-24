@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+ 	<html>
+   	<head>
+     	<title>Hotel-Locate</title>
+     	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+      <link href="css/style.css" rel="stylesheet" type="text/css">
+   	</head>
+   	<body>
+      <form action="process.php" method="get" id="hotelSearchForm" class="mainGridBefore">
+        <div id="leftPad"></div>
+        <h1 id="logo" class="flexCenter vertCenter">Hotel-Locate</h1>
+        <div class="flexEnd vertCenter">
+          <label id="sortTypeLabel" for="sortType" class="noWrap startHidden">Sort By:</label>
+          <select id="sortType" class="startHidden">
+            <option value="13">Relevance</option>
+            <option value="0">Name Ascending</option>
+            <option value="1">Name Descending</option>
+            <option value="2">Star Ascending</option>
+            <option value="3">Star Descending</option>
+            <option value="4">Distance Ascending</option>
+            <option value="5">Distance Descending</option>
+            <option value="10">Price Ascending</option>
+            <option value="11">Price Descending</option>
+          </select>
+        </div>
+        <div id="rightPad"></div>
+        <div class="flexCenter">
+          <div id="inputDiv" class="formGrid">
+            <label for="textSearch" class="standardLabel">Search:</label>
+            <div>
+              <input type="search" name="textSearch" id="textSearch" autofocus accesskey="1">
+            </div>
+            <label for="starMin" class="standardLabel">Minimum Star Rating:</label>
+            <div class="flexStart vertCenter">
+              <input type="range" name="starMin" id="starMin" value="1" min="1" max="5" step="1" list="starData">
+              <datalist id="starData">
+                <option value="1" label="1">1</option>
+                <option value="2" label="2">2</option>
+                <option value="3" label="3">3</option>
+                <option value="4" label="4">4</option>
+                <option value="5" label="5">5</option>
+              </datalist>
+              <label id="starMinDisplay" for="starMin" class="noWrap">1★<label>
+            </div>
+            <label id="distanceLabel" for="distanceMax" class="standardLabel">
+              <span class="noWrap">Maximum distance</span>
+              <span class="noWrap">from the town centre:</span>
+            </label>
+            <div class="flexStart vertCenter">
+              <input type="range" name="distanceMax" id="distanceMax" value="10" min="0.5" max="5.5" step="0.5" list="distanceData">
+              <datalist id="distanceData">
+                <option value="0.5" label="0"></option>
+                <!-- <option value="1" label="1"></option> -->
+                <option value="3" label="3"></option>
+                <option value="5" label="5"></option>
+                <option value="5.5" label="5+"></option>
+              </datalist>
+              <label id="distanceMaxDisplay" for="distanceMax" class="noWrap">+5 mi.<label>
+            </div>
+            <div class="flexStart vertCenter">
+              <input type="checkbox" name="wifi" id="wifiRequire">
+              <label for="wifiRequire" class="standardLabel">WiFi</label>
+            </div>
+            <div class="flexStart vertCenter">
+              <input type="checkbox" name="pool" id="poolRequire">
+              <label for="poolRequire" class="standardLabel">Pool</label>
+            </div>
+            <label for="priceMin" class="standardLabel">Minimum Price:</label>
+            <div class="flexStart">
+              <div id="priceMinWrapper" class="flexStart unFocusOutline">
+                <label for="priceMin" class="inputAddon">£</label>
+                <input type="number" name="priceMin" id="priceMin" value="0" min="0" max="200">
+              </div>
+            </div>
+            <div id="priceMinErrorDiv" class="flexStart gridColSpan2 errorMessage"></div>
+            <label for="priceMax" class="standardLabel">Maximum Price:</label>
+            <div class="flexStart">
+              <div id="priceMaxWrapper" class="flexStart unFocusOutline">
+                <label for="priceMax" class="inputAddon">£</label>
+                <input type="number" name="priceMax" id="priceMax" value="200" min="0" max="200">
+              </div>
+            </div>
+            <div id="priceMaxErrorDiv" class="flexStart gridColSpan2 errorMessage"></div>
+            <label id="minMatchLabel" for="minMatch" class="flexStart vertCenter noWrap startHidden">Minimum Relevance:</label>
+            <div id="minMatchDiv" class="flexStart vertCenter startHidden">
+              <input type="range" name="minMatch" id="minMatch" value="50" min="0" max="100" step="10" list="matchData">
+              <datalist id="matchData">
+                <option value="0" label="0"></option>
+                <option value="10" label="10"></option>
+                <option value="20" label="20"></option>
+                <option value="30" label="30"></option>
+                <option value="40" label="40"></option>
+                <option value="50" label="50"></option>
+                <option value="60" label="60"></option>
+                <option value="70" label="70"></option>
+                <option value="80" label="80"></option>
+                <option value="90" label="90"></option>
+                <option value="100" label="100"></option>
+              </datalist>
+              <label id="minMatchDisplay" for="minMatch" class="noWrap">50%<label>
+            </div>
+            <div class="flexCenter gridColSpan2">
+              <input type="button" id="searchButton" value="Search" accesskey="9">
+            </div>
+            <div id="formErrorDiv" class="flexStart gridColSpan2 errorMessage"></div>
+          </div>
+        </div>
+        <div id="hotelOutput"></div>
+        <footer id="copyright">
+          <p>Copyright © 2018 Joshua Stocks U1757754. All rights reserved.</p>
+        </footer>
+      </form>
+      <script type="module" src="js/main.js"></script>
+   	</body>
+ 	</html>
