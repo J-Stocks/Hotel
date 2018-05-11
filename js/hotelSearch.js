@@ -70,20 +70,6 @@ export class SearchCriteria {
   // Section 2.1
   // Returns the entered string after removing unacceptable characters and converting to lower case.
   static cleanSearchString(string){
-    string = string.toLowerCase();
-    const acceptableCharacters = "abcdefghijklmnopqrstuvwxyz ";
-    let i = 0;
-    while (i < string.length) {
-      if (acceptableCharacters.indexOf(string.substring(i,i+1)) < 0) {
-        string = string.substring(0,i) + string.substring(i+1);
-      }else {
-        i++;
-      }
-    }
-    return string;
-  }
-
-  static cleanSearchString2(string){
     const acceptableCharacters = "abcdefghijklmnopqrstuvwxyz ";
     let charArray = (string.toLowerCase()).split("");
     charArray = charArray.filter(function(char){
@@ -98,26 +84,6 @@ export class SearchCriteria {
   // Section 2.2
   //Returns an array of all the words in the searchString after removing spaces and converting to lower case.
   getSearchTerms(){
-    let searchTerms = [];
-    let termsString = SearchCriteria.cleanSearchString(this.searchString);
-    if (termsString === "") {
-      return searchTerms;
-    }
-    while (termsString.indexOf(" ") >= 0) {
-      if (termsString === " ") {
-        return searchTerms;
-      }else if (termsString.indexOf(" ") === 0) {
-        termsString = termsString.substring(1);
-      }else {
-        searchTerms.push(termsString.substring(0,termsString.indexOf(" ")));
-        termsString = termsString.substring((termsString.indexOf(" ")+1));
-      }
-    }
-    searchTerms.push(termsString);
-    return searchTerms;
-  }
-
-  getSearchTerms2(){
     const termsString = SearchCriteria.cleanSearchString(this.searchString);
     let searchTerms = termsString.split(" ");
     searchTerms = searchTerms.filter(function(term){
@@ -130,18 +96,12 @@ export class SearchCriteria {
   }
 
   // Section 2.3
-  // Returns true if any of the search terms in the searchString appears in the hotel.name or if there are no search terms in the searchString, else returns false.
+  // Returns true if any of the search terms in the searchString appears in the hotel.name or if there are no search terms in the searchString, else returns false. (currently unused)
   detectSearchTerms(inputHotel){
     const searchTerms = this.getSearchTerms();
     if (searchTerms.length === 0) {
       return true;
     }
-    // searchTerms.forEach(function(term){
-    //   if (((inputHotel.name).toLowerCase()).indexOf(term) >= 0) {
-    //     console.log("We tried.");
-    //     return true;
-    //   }
-    // })
     for (let i = 0; i < searchTerms.length; i++) {
       if (((inputHotel.name).toLowerCase()).indexOf(searchTerms[i]) >= 0) {
         return true;
@@ -151,13 +111,9 @@ export class SearchCriteria {
   }
 
   // Section 2.4
-  // Returns a bool
+  // Returns a bool indicating if the given hotel matches the minimum requirements of the search.
   isAcceptableHotel(inputHotel){
     return this.calculateMatch(inputHotel) >= this.minMatch;
-    // if (this.calculateMatch(inputHotel) >= this.minMatch) {
-    //   return true;
-    // }
-    // return false;
   }
 
   // Section 2.5
@@ -188,14 +144,10 @@ export class SearchCriteria {
   }
 
   // Section 2.6
-  // Filters an array of hotels, removing those that have a calculateMatch below the specifed threshold.
+  // Filters an array of hotels, removing those that don't meet the minimum requirements of the search criteria.
   getAcceptableHotels(inputHotels){
     const inputSearch = this;
     const acceptablehotels = inputHotels.filter(function(hotel){
-      // if (inputSearch.isAcceptableHotel(hotel)) {
-      //   return true;
-      // }
-      // return false;
       return inputSearch.isAcceptableHotel(hotel);
     })
     return acceptablehotels;
@@ -210,7 +162,6 @@ export class SearchCriteria {
     }else {
       let leftArray = [];
       let rightArray = [];
-      // let newHotels = [];
       let pivotHotel = inputHotels[(inputHotels.length -1)];
       for (let i = 0; i < (inputHotels.length -1); i++) {
         if (this.switchSortCriteria(inputHotels[i],pivotHotel)) {
@@ -219,7 +170,6 @@ export class SearchCriteria {
           rightArray.push(inputHotels[i]);
         }
       }
-      // return newHotels.concat(this.switchQuickSortHotels(leftArray,sortType), pivotHotel, this.switchQuickSortHotels(rightArray,sortType));
       return this.switchQuickSortHotels(leftArray).concat(pivotHotel, this.switchQuickSortHotels(rightArray));
     }
   }

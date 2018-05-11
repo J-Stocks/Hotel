@@ -31,7 +31,7 @@
 
 // Section 1.0
 // Module imports.
-import {Hotel , SearchCriteria } from '/js/hotelSearch.js';
+import {Hotel , SearchCriteria } from '../js/hotelSearch.js';
 
 
 // Section 2.0
@@ -56,7 +56,7 @@ function emptyElement(elementId){
 }
 
 // Section 2.2
-// Changes the page layout and unhides certain elements after the user first searches.
+// Changes the page layout and unhides appropriate elements after the user first searches.
 export function updatePageLayout(){
   document.getElementById("hotelSearchForm").classList = "mainGridAfter";
   document.getElementById("logo").classList.remove("flexCenter");
@@ -133,12 +133,8 @@ function getSortType(){
 }
 
 // Section 3.2
-// Displays a message in the page if unsuitable form input was given. (Needs work.)
+// Displays a message in the page if unsuitable form input was given.
 export function displayErrorMessages(inputSearch){
-  // let hotelOutputPad = document.createElement("div");
-  // hotelOutputPad.classList = "noHotels";
-  // document.getElementById("hotelOutput").appendChild(hotelOutputPad);
-
   if (inputSearch.priceMin > inputSearch.priceMax) {
     let tempErrorMessage = document.createElement("p");
     tempErrorMessage.textContent = "Minimum price must be less than or equal to maximum price.";
@@ -288,7 +284,7 @@ function createHotelElements(inputSearch, inputHotel){
 }
 
 // Section 4.1.1.1
-// Returns a <ul> listing certain hotel information.
+// Returns a <ul> listing a hotel's information.
 function createDetailsList(inputSearch, inputHotel){
   let detailsList = document.createElement("ul");
   detailsList.classList = "hotelDetailsList";
@@ -298,7 +294,6 @@ function createDetailsList(inputSearch, inputHotel){
   detailsList.appendChild(hotelRelevance);
 
   let starRating = document.createElement("li");
-  // starRating.textContent = `${inputHotel.star}★`;
   let starString = "";
   for (let i = 0; i < inputHotel.star; i++) {
     starString += "★"
@@ -344,7 +339,7 @@ function createDetailsList(inputSearch, inputHotel){
 }
 
 // Section 4.1.2
-// Returns a <div> containing a error message.
+// Returns a <div> containing a error message for when no hotels match the user's search.
 function createNoHotelsMessage(){
   let failureWrapper = document.createElement("div");
   failureWrapper.classList = "noHotels";

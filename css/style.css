@@ -1,10 +1,9 @@
 /* Section 1 Colour scheme guide. */
 /* Section 2 Page wide element styleing */
-/* Section 3 Main page layout. */
-/* Section 4 Common flex classes. */
-/* Section 5 Logo style. */
-/* Section 6 Search form style. */
-/* Section 7 Hotel output style. */
+/* Section 3 Common flex classes. */
+/* Section 4 Main page layout. */
+/* Section 5 Search form style. */
+/* Section 6 Hotel output style. */
 
 /* Section 1 */
 /* Colour scheme guide */
@@ -31,9 +30,10 @@ body{
   background-color: #ACCBD1;
 }
 
-/* body::selection{
-
-} */
+::selection{
+  background-color: #7E9499;
+  color: #000000;
+}
 
 h1,h2,h3,h4,h5,p,ul,li,ol{
   padding: 0;
@@ -41,6 +41,41 @@ h1,h2,h3,h4,h5,p,ul,li,ol{
 }
 
 /* Section 3 */
+/*Common Flex classes*/
+.flexCenter{
+  display: flex;
+  justify-content: center;
+}
+
+.flexBetween{
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexAround{
+  display: flex;
+  justify-content: space-around;
+}
+
+.flexStart{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flexEnd{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flexCol{
+  flex-direction: column;
+}
+
+.vertCenter{
+  align-items: center;
+}
+
+/* Section 4 */
 /* Main page layout. */
 .mainGridBefore{
   display: grid;
@@ -80,48 +115,9 @@ h1,h2,h3,h4,h5,p,ul,li,ol{
   font-size: 0.77em;
 }
 
-/* Section 4 */
-/*Common Flex classes*/
-.flexCenter{
-  display: flex;
-  justify-content: center;
-}
-
-.flexBetween{
-  display: flex;
-  justify-content: space-between;
-}
-
-.flexAround{
-  display: flex;
-  justify-content: space-around;
-}
-
-.flexStart{
-  display: flex;
-  justify-content: flex-start;
-}
-
-.flexEnd{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.flexCol{
-  flex-direction: column;
-}
-
-.vertCenter{
-  align-items: center;
-}
-
 /* Section 5 */
-/* Logo style. */
-
-/* Section 6 */
 /* Search form style. */
 .errorMessage{
-  /* color: #A52422; */
   color: #721917;
 }
 
@@ -129,7 +125,6 @@ h1,h2,h3,h4,h5,p,ul,li,ol{
   display: grid;
   align-self: flex-start;
   max-width: 20em;
-  /* grid-template-columns: 7em auto; */
   grid-template-columns: auto auto;
   grid-gap: 0.5em;
 }
@@ -161,7 +156,7 @@ h1,h2,h3,h4,h5,p,ul,li,ol{
   align-items: baseline;
 }
 
-.inputAddon{
+.priceAddon{
   display: flex;
   align-items: center;
   padding-left: 0.2em;
@@ -203,19 +198,131 @@ input[type="number"]{
   background-color: #7BADB7;
 }
 
-/* input[type="number"]:focus{
-  border: 0.1em solid #7E9499;
-  border-left: none;
-} */
-
-/* input[type="number"]:hover{
-  border: 0.1em solid #7E9499;
-  border-left: none;
-} */
-
 input[type="checkbox"]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  font-size: 12px;
+  font-weight: bolder;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000000;
+  outline: 2px solid #ACCBD1;
   margin: 0;
+  margin-right: 5px;
   padding: 0;
+}
+
+input[type="checkbox"]:focus{
+  outline: 2px solid #7E9499;
+}
+
+input[type="checkbox"]:hover{
+  outline: 2px solid #7E9499;
+}
+
+input[type="checkbox"]:checked{
+  background-color: #7BADB7;
+}
+
+input[type="checkbox"]:checked::after{
+  content: '✓';
+}
+
+input[type="range"]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  outline: none;
+  background-color: #ACCBD1;
+}
+
+/* Cross-browser range thumb style.*/
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #000000;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  transition: all ease-in-out 0.2s;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb{
+  background-color: #7E9499;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb{
+  background-color: #7E9499;
+}
+
+input[type=range]::-moz-range-thumb{
+  -moz-appearance: none;
+  background-color: #000000;
+  width: 15px;
+  height: 15px;
+  border: none;
+  border-radius: 15px;
+  transition: all ease-in-out 0.2s;
+}
+
+input[type="range"]:focus::-moz-range-thumb{
+  background-color: #7E9499;
+}
+
+input[type="range"]:hover::-moz-range-thumb{
+  background-color: #7E9499;
+}
+
+input[type=range]::-ms-thumb{
+  -ms-appearance: none;
+  background-color: #000000;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  transition: all ease-in-out 0.2s;
+}
+
+input[type="range"]:focus::-ms-thumb{
+  background-color: #7E9499;
+}
+
+input[type="range"]:hover::-ms-thumb{
+  background-color: #7E9499;
+}
+
+/* Cross-browser range track style.*/
+input[type=range]::-webkit-slider-runnable-track{
+  -webkit-appearance: none;
+  background-color: #7BADB7;
+  height: 15px;
+  border-radius: 15px;
+  outline: none;
+}
+
+input[type=range]::-moz-range-track{
+  -moz-appearance: none;
+  background-color: #7BADB7;
+  height: 15px;
+  border-radius: 15px;
+  outline: none;
+}
+
+input[type=range]::-ms-fill-lower{
+  -ms-appearance: none;
+  background-color: #7BADB7;
+  height: 15px;
+  border-radius: 15px;
+  outline: none;
+}
+
+input[type=range]::-ms-fill-upper{
+  -ms-appearance: none;
+  background-color: #7BADB7;
+  height: 15px;
+  border-radius: 15px;
+  outline: none;
 }
 
 input[type="button"]{
@@ -233,10 +340,6 @@ select{
   outline: 0.1em solid #ACCBD1;
   transition: all ease-in-out 0.2s;
 }
-
-/* select::selection{
-  background-color: #7E9499;
-} */
 
 select:focus{
   outline: 0.1em solid #7E9499;
@@ -264,16 +367,10 @@ select:hover{
 /* Section 7 */
 /* Hotel output style. */
 .checkMark{
-  /* color: green; */
-  /* color: #53DD6C; */
-  /* color: #6B8F71; */
-  /* color: #329a22; */
   color: #143F0D;
 }
 
 .crossMark{
-  /* color: red; */
-  /* color: #A52422; */
   color: #711919;
 }
 
@@ -291,15 +388,11 @@ select:hover{
 
 .hotelImage{
   background-color: #7BADB7;
-  /* grid-row-start: 1; */
-  /* grid-row-end: 3; */
-  /* margin-right: 0.3em; */
 }
 
 .hotelDetails{
   padding: 0.3em;
   background-color: #7BADB7;
-  /* min-height: 250px; */
   white-space: nowrap;
 }
 
@@ -307,7 +400,6 @@ select:hover{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* color: #A52422; */
   color: #721917;
   min-width: 29.4em;
   padding-top: 9em;

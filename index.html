@@ -6,7 +6,7 @@
       <link href="css/style.css" rel="stylesheet" type="text/css">
    	</head>
    	<body>
-      <form action="process.php" method="get" id="hotelSearchForm" class="mainGridBefore">
+      <form action="process.php" method="get" id="hotelSearchForm" class="mainGridConstant mainGridBefore">
         <div id="leftPad"></div>
         <h1 id="logo" class="flexCenter vertCenter">Hotel-Locate</h1>
         <div class="flexEnd vertCenter">
@@ -40,7 +40,7 @@
                 <option value="4" label="4">4</option>
                 <option value="5" label="5">5</option>
               </datalist>
-              <label id="starMinDisplay" for="starMin" class="noWrap">1★<label>
+              <label id="starMinDisplay" for="starMin" class="noWrap">1★</label>
             </div>
             <label id="distanceLabel" for="distanceMax" class="standardLabel">
               <span class="noWrap">Maximum distance</span>
@@ -49,13 +49,12 @@
             <div class="flexStart vertCenter">
               <input type="range" name="distanceMax" id="distanceMax" value="10" min="0.5" max="5.5" step="0.5" list="distanceData">
               <datalist id="distanceData">
-                <option value="0.5" label="0"></option>
-                <!-- <option value="1" label="1"></option> -->
+                <option value="0.5" label="0.5"></option>
                 <option value="3" label="3"></option>
                 <option value="5" label="5"></option>
                 <option value="5.5" label="5+"></option>
               </datalist>
-              <label id="distanceMaxDisplay" for="distanceMax" class="noWrap">+5 mi.<label>
+              <label id="distanceMaxDisplay" for="distanceMax" class="noWrap">+5 mi.</label>
             </div>
             <div class="flexStart vertCenter">
               <input type="checkbox" name="wifi" id="wifiRequire">
@@ -68,7 +67,7 @@
             <label for="priceMin" class="standardLabel">Minimum Price:</label>
             <div class="flexStart">
               <div id="priceMinWrapper" class="flexStart unFocusOutline">
-                <label for="priceMin" class="inputAddon">£</label>
+                <label for="priceMin" class="priceAddon">£</label>
                 <input type="number" name="priceMin" id="priceMin" value="0" min="0" max="200">
               </div>
             </div>
@@ -76,7 +75,7 @@
             <label for="priceMax" class="standardLabel">Maximum Price:</label>
             <div class="flexStart">
               <div id="priceMaxWrapper" class="flexStart unFocusOutline">
-                <label for="priceMax" class="inputAddon">£</label>
+                <label for="priceMax" class="priceAddon">£</label>
                 <input type="number" name="priceMax" id="priceMax" value="200" min="0" max="200">
               </div>
             </div>
@@ -97,7 +96,7 @@
                 <option value="90" label="90"></option>
                 <option value="100" label="100"></option>
               </datalist>
-              <label id="minMatchDisplay" for="minMatch" class="noWrap">50%<label>
+              <label id="minMatchDisplay" for="minMatch" class="noWrap">50%</label>
             </div>
             <div class="flexCenter gridColSpan2">
               <input type="button" id="searchButton" value="Search" accesskey="9">
